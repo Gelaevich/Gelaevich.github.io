@@ -1,0 +1,182 @@
+:root
+{
+    --clr-neon:hsl(121 100% 30%);
+    --clr-bg: hsl(121 21% 16%);
+}
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ------ Footer ------*/
+footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+}
+
+.social-icons ul
+{
+    position: relative;
+    display: flex;
+}
+
+.social-icons ul li 
+{
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.social-icons ul li a
+{
+    text-decoration: none;
+
+}
+
+.social-icons ul li a .fab 
+{
+    font-size: 6em;
+    color: #222;
+}
+
+
+.social-icons ul li::before
+{
+    font-family: fontAwesome;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    font-size: 6em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.55s ease-in-out;
+}
+
+/* telegram icon */
+.social-icons ul li:nth-child(1):before
+{
+    pointer-events: none;
+    content: '\f3fe';
+    color: rgb(42, 103, 216);
+    border-bottom: 4px solid rgb(42, 103, 216);
+}
+
+/* whatsup icon */
+.social-icons ul li:nth-child(2):before
+{
+    pointer-events: none;
+    content: '\f232';
+    color: #4FCE5D;
+    border-bottom: 4px solid #4FCE5D;
+}
+
+/* instagram icon */
+.social-icons ul li:nth-child(3):before
+{
+    pointer-events: none;
+    content: '\f16d';
+    color: #bc2a8d ;
+    border-bottom: 4px solid #bc2a8d;
+}
+
+
+.social-icons ul li:hover:before
+{
+    height: 100%;
+}
+
+/* neon button */
+
+.arrow 
+{
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.neon-button
+{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 3px solid;
+    border-radius: 15px;
+    padding: 0.1em;
+
+    text-shadow: 
+    0 0 0.125em hsl(0 0% 100%/0.3),
+    0 0 0.25em currentColor;
+
+    /* inset add shadow inside the box*/
+    box-shadow: 
+    inset 0 0 0.5em 0 var(--clr-neon), 
+    0 0 0.5em 0 var(--clr-neon);
+    
+    transition: background-color 150ms;
+}
+
+.neon-button::before
+{
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+    transform: 
+    perspective(1.5rem) 
+    rotateX(50deg)
+    scale(1, 0.35);
+
+    filter: blur(0.5em);
+    opacity: 0.7;
+}
+
+.neon-button::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 0 1.7em 0.2em var(--clr-neon);
+    opacity: 0;
+    border-radius: 15px;
+    transition: opacity 200ms linear;
+}
+
+.neon-button:hover,
+.neon-button:focus
+{
+    background: var(--clr-neon);
+    color: var(--clr-bg);
+    text-shadow: none;
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before,
+.neon-button:hover::after,
+.neon-button:focus::after
+{
+    opacity: 1;
+}
+
